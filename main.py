@@ -38,6 +38,7 @@ def find_index_post(id):
         if p['id'] == id:
             return i
 
+# request Get method url: "/"
 
 @app.get("/")
 def root():
@@ -47,6 +48,14 @@ def root():
 @app.get("/posts")
 def get_posts():
     return {"date": my_posts}
+
+@app.post("/createposts")
+def create_posts(new_post: Post):
+    print(new_post)
+    return {"data": new_post}
+
+
+
 
 
 @app.post("/posts", status_code=status.HTTP_201_CREATED)
